@@ -43,8 +43,16 @@ class GameProvider with ChangeNotifier {
     
     final random = Random();
     
-    final pairs = selectedCategory!.pairs;
-    currentPair = pairs[random.nextInt(pairs.length)];
+    final words = selectedCategory!.words;
+    
+    // Randomly pick two distinct words from the massive list
+    String l3chirWord = words[random.nextInt(words.length)];
+    String l7acharWord;
+    do {
+      l7acharWord = words[random.nextInt(words.length)];
+    } while (l7acharWord == l3chirWord);
+    
+    currentPair = WordPair(l3chirWord: l3chirWord, l7acharWord: l7acharWord);
     
     for (var p in players) {
       p.isL7achar = false;

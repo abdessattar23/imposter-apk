@@ -9,13 +9,13 @@ class Category {
   final String id;
   final String name;
   final String description;
-  final List<WordPair> pairs;
+  final List<String> words;
 
   Category({
     required this.id,
     required this.name,
     required this.description,
-    required this.pairs,
+    required this.words,
   });
 }
 
