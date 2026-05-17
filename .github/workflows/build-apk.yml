@@ -1,4 +1,4 @@
-name: Build Android APK
+﻿name: Build Android APK
 
 on:
   push:
@@ -27,6 +27,17 @@ jobs:
           flutter-version: '3.22.0'
           channel: 'stable'
           
+      - name: Generate Platform Folders
+        run: |
+          mkdir temp_src
+          mv lib temp_src/
+          mv pubspec.yaml temp_src/
+          flutter create --project-name chkon_l_7achar --platforms android .
+          rm -rf lib
+          mv temp_src/lib .
+          mv temp_src/pubspec.yaml .
+          rm -rf temp_src
+
       - name: Get Dependencies
         run: flutter pub get
 
