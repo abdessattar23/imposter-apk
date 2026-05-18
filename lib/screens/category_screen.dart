@@ -145,6 +145,8 @@ class CategoryScreen extends StatelessWidget {
         return Icons.directions_car;
       case 'tachnniyt':
         return Icons.sports_soccer;
+      case 'rwina':
+        return Icons.shuffle;
       case 'blayssat':
         return Icons.place;
       default:

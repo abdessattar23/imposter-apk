@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import '../data/database.dart';
 
 class GameProvider with ChangeNotifier {
   int numPlayers = 3;
@@ -65,7 +66,18 @@ class GameProvider with ChangeNotifier {
     
     // Pick a random category from selected ones
     currentRoundCategory = selectedCategories[random.nextInt(selectedCategories.length)];
-    final words = currentRoundCategory!.words;
+    List<String> words = [];
+    
+    if (currentRoundCategory!.id == 'rwina') {
+      // Gather all words from all categories except rwina
+      for (var cat in GameDatabase.categories) {
+        if (cat.id != 'rwina') {
+          words.addAll(cat.words);
+        }
+      }
+    } else {
+      words = currentRoundCategory!.words;
+    }
     
     // Randomly pick two distinct words from the massive list
     String l3chirWord = words[random.nextInt(words.length)];

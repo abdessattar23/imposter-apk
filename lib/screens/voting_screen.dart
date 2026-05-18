@@ -13,21 +13,18 @@ class VotingScreen extends StatefulWidget {
 class _VotingScreenState extends State<VotingScreen> {
   int currentPlayerVotingIndex = 0;
   String? selectedVoteId;
+  bool isFinished = false;
 
   @override
   Widget build(BuildContext context) {
+    if (isFinished) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator(color: Color(0xFFD4AF37))));
+    }
+
     return Consumer<GameProvider>(
       builder: (context, game, child) {
         if (currentPlayerVotingIndex >= game.players.length) {
-          // Everyone voted
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            bool caught = game.endRound();
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => RoundResultScreen(l7acharCaught: caught)),
-            );
-          });
-          return const Scaffold(body: Center(child: CircularProgressIndicator()));
+           return const Scaffold(body: Center(child: CircularProgressIndicator(color: Color(0xFFD4AF37))));
         }
 
         final voter = game.players[currentPlayerVotingIndex];
@@ -105,10 +102,21 @@ class _VotingScreenState extends State<VotingScreen> {
                     onPressed: selectedVoteId != null
                         ? () {
                             game.voteForPlayer(selectedVoteId!);
-                            setState(() {
-                              currentPlayerVotingIndex++;
-                              selectedVoteId = null;
-                            });
+                            if (currentPlayerVotingIndex < game.players.length - 1) {
+                              setState(() {
+                                currentPlayerVotingIndex++;
+                                selectedVoteId = null;
+                              });
+                            } else {
+                              setState(() {
+                                isFinished = true;
+                              });
+                              bool caught = game.endRound();
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => RoundResultScreen(l7acharCaught: caught)),
+                              );
+                            }
                           }
                         : null,
                     child: const Text(

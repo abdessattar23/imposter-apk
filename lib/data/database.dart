@@ -120,5 +120,11 @@ class GameDatabase {
         'L\'Agdal', 'Hassan', 'Yacoub El Mansour', 'Massira', 'Daoudiate'
       ],
     )
+    Category(
+      id: 'rwina',
+      name: 'Rwina wl Blbala',
+      description: 'Tkhelit m3a ga3 lkategori',
+      words: [], // Handled dynamically in game_provider
+    )
   ];
 }
