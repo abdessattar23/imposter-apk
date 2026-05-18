@@ -119,7 +119,7 @@ class GameDatabase {
         'Sidi Belyout', 'Moulay Idriss', 'L\'Hermitage', 'Bourgogne', 'Anfa',
         'L\'Agdal', 'Hassan', 'Yacoub El Mansour', 'Massira', 'Daoudiate'
       ],
-    )
+    ),
     Category(
       id: 'rwina',
       name: 'Rwina wl Blbala',
