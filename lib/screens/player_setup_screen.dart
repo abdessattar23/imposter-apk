@@ -34,7 +34,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
             return Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -59,7 +59,7 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                           ),
                           IconButton(
                             icon: const Icon(Icons.add_circle, color: Colors.white, size: 30),
-                            onPressed: game.numPlayers < 10
+                            onPressed: game.numPlayers < 15
                                 ? () {
                                     game.setNumPlayers(game.numPlayers + 1);
                                     game.initializePlayers();
@@ -71,9 +71,45 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                     ],
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Ch7al mn Jwala (Rounds)?',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.remove_circle, color: Colors.white, size: 30),
+                            onPressed: game.numRounds > 1
+                                ? () {
+                                    game.setNumRounds(game.numRounds - 1);
+                                  }
+                                : null,
+                          ),
+                          Text(
+                            '${game.numRounds}',
+                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.secondary),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.add_circle, color: Colors.white, size: 30),
+                            onPressed: game.numRounds < 10
+                                ? () {
+                                    game.setNumRounds(game.numRounds + 1);
+                                  }
+                                : null,
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
                 Expanded(
                   child: ListView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     itemCount: game.players.length,
                     itemBuilder: (context, index) {
                       return Padding(

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/game_provider.dart';
-import 'reveal_screen.dart';
+import 'voting_screen.dart';
 
 class InterrogationScreen extends StatefulWidget {
   const InterrogationScreen({super.key});
@@ -121,7 +121,7 @@ class _InterrogationScreenState extends State<InterrogationScreen> with SingleTi
                   _timer?.cancel();
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const RevealScreen()),
+                    MaterialPageRoute(builder: (context) => const VotingScreen()),
                   );
                 },
                 child: const Text(

@@ -24,11 +24,15 @@ class Player {
   String name;
   bool isL7achar;
   String word;
+  int score;
+  int votes;
 
   Player({
     required this.id,
     required this.name,
     this.isL7achar = false,
     this.word = '',
+    this.score = 0,
+    this.votes = 0,
   });
 }
