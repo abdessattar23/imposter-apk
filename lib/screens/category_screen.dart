@@ -155,6 +155,8 @@ class CategoryScreen extends StatelessWidget {
         return Icons.speaker_notes;
       case 'motanawi3a':
         return Icons.dashboard_customize;
+      case 'akhira':
+        return Icons.record_voice_over;
       case 'rwina':
         return Icons.shuffle;
       default:
