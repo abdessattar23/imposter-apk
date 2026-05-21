@@ -137,18 +137,26 @@ class CategoryScreen extends StatelessWidget {
     switch (id) {
       case 'makla':
         return Icons.fastfood;
-      case 'lbsala':
-        return Icons.shopping_bag;
-      case 'lm3icha':
-        return Icons.storefront;
+      case 'taqafa':
+        return Icons.mosque;
+      case 'ddar':
+        return Icons.home;
+      case 'hyatna':
+        return Icons.people;
       case 'mowasalat':
         return Icons.directions_car;
-      case 'tachnniyt':
+      case 'koura':
         return Icons.sports_soccer;
-      case 'rwina':
-        return Icons.shuffle;
       case 'blayssat':
         return Icons.place;
+      case 'darija':
+        return Icons.chat;
+      case 'chari3':
+        return Icons.speaker_notes;
+      case 'motanawi3a':
+        return Icons.dashboard_customize;
+      case 'rwina':
+        return Icons.shuffle;
       default:
         return Icons.category;
     }

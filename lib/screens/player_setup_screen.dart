@@ -114,10 +114,14 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 12),
-                        child: TextField(
+                        child: TextFormField(
+                          key: ValueKey(game.players[index].id),
+                          initialValue: game.players[index].name.startsWith('L3ab') ? '' : game.players[index].name,
                           style: const TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                             labelText: 'L3ab ${index + 1}',
+                            hintText: 'Smiya dl l3ab',
+                            hintStyle: const TextStyle(color: Colors.white30),
                             labelStyle: const TextStyle(color: Colors.white70),
                             enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(color: Colors.white30),
